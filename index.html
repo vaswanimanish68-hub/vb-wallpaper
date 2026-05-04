@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -491,6 +492,42 @@ section{padding:64px 0}
 .nav-drawer-foot .call-link{display:flex;align-items:center;justify-content:center;gap:8px;padding:10px;font-size:13px;color:#444;font-weight:600}
 .nav-drawer-foot .call-link i{color:#0f5132}
 
+
+/* ============= BROWSE SECTION (NEW HOME CATEGORIES) ============= */
+.browse-section{margin-bottom:36px}
+.browse-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.browse-header h3{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#1a1a1a;display:flex;align-items:center;gap:10px}
+.browse-header h3 i{color:#0f5132;font-size:16px}
+.browse-header .view-all{font-size:13px;color:#0f5132;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
+.browse-header .view-all:hover{color:#cf9b3b}
+.sub-cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.sub-cat-card{border-radius:12px;overflow:hidden;cursor:pointer;border:1px solid #eee;background:#fff;transition:box-shadow .22s,transform .22s}
+.sub-cat-card:hover{box-shadow:0 8px 24px rgba(0,0,0,.1);transform:translateY(-2px)}
+.sub-cat-card .sc-img{height:120px;overflow:hidden;background:#f4f4f4}
+.sub-cat-card .sc-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.sub-cat-card:hover .sc-img img{transform:scale(1.07)}
+.sub-cat-card .sc-info{padding:10px 12px;display:flex;align-items:center;gap:9px}
+.sub-cat-card .sc-icon{width:30px;height:30px;border-radius:50%;background:#f4faf6;border:1px solid #c8e6d0;display:flex;align-items:center;justify-content:center;color:#0f5132;font-size:12px;flex-shrink:0}
+.sub-cat-card .sc-text h4{font-size:13px;font-weight:600;color:#1a1a1a;margin-bottom:1px;line-height:1.2}
+.sub-cat-card .sc-text span{font-size:11px;color:#888}
+.rolls-big-card{border-radius:14px;overflow:hidden;cursor:pointer;height:160px;position:relative;box-shadow:0 4px 18px rgba(0,0,0,.07)}
+.rolls-big-card img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.rolls-big-card:hover img{transform:scale(1.05)}
+.rolls-big-card::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.7) 0%,rgba(0,0,0,.2) 70%);z-index:1}
+.rolls-big-card .rbc-text{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:center;padding:22px}
+.rolls-big-card .rbc-text h3{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#fff;margin-bottom:4px}
+.rolls-big-card .rbc-text p{font-size:13px;color:rgba(255,255,255,.85);margin-bottom:12px}
+.rolls-big-card .rbc-text .btn{align-self:flex-start;font-size:13px;padding:8px 16px}
+/* ============= NAV SUB2 MENU (Multi-level mobile drawer) ============= */
+.nav-sub1-row{display:flex;align-items:center;justify-content:space-between;padding:11px 22px 11px 52px;font-size:14px;color:#333;font-weight:600;border-bottom:1px solid #eee;cursor:pointer;background:#f9fdfb;user-select:none}
+.nav-sub1-row .chevron2{font-size:11px;color:#999;transition:transform .2s}
+.nav-sub1-row.open .chevron2{transform:rotate(180deg)}
+.nav-sub1-row.open{color:#0f5132;background:#eef8f2}
+.nav-sub2-menu{display:none;flex-direction:column;background:#f0f8f3}
+.nav-sub2-menu.open{display:flex}
+.nav-sub2-menu a{padding:9px 22px 9px 70px;font-size:13px;color:#555;border-bottom:1px solid rgba(0,0,0,.05);display:flex;align-items:center;gap:8px;cursor:pointer;transition:background .15s}
+.nav-sub2-menu a i{color:#0f5132;font-size:11px;width:13px}
+.nav-sub2-menu a:hover,.nav-sub2-menu a.active{color:#0f5132;background:#e2f2e8}
 /* ============= MOBILE ============= */
 @media (max-width: 980px){
   .nav{display:none}
@@ -605,7 +642,7 @@ section{padding:64px 0}
 <header class="header">
   <div class="header-inner">
     <a class="logo" data-nav="home">
-      <span class="brand">VIBE<span class="n">n</span>WALLS</span>
+      <span class="brand">VIBE <span class="n">N </span>WALLS</span>
       <span class="tag">Personalized Walls, Perfectly Yours</span>
     </a>
     <nav class="nav" id="mainNav">
@@ -636,11 +673,45 @@ section{padding:64px 0}
           <i class="fa-solid fa-chevron-down chevron"></i>
         </div>
         <div class="nav-sub-menu" id="wallpapersSubMenu">
-          <a data-nav="customized"><i class="fa-solid fa-pen-ruler"></i> Customized Wallpapers</a>
+          <!-- By Room -->
+          <div class="nav-sub1-row" id="byRoomToggle">
+            <span><i class="fa-solid fa-couch" style="margin-right:6px;color:#0f5132"></i> By Room</span>
+            <i class="fa-solid fa-chevron-down chevron2"></i>
+          </div>
+          <div class="nav-sub2-menu" id="byRoomMenu">
+            <a data-cat="living"><i class="fa-solid fa-couch"></i> Living Room</a>
+            <a data-cat="bedroom"><i class="fa-solid fa-bed"></i> Bedroom</a>
+            <a data-cat="kidsroom"><i class="fa-solid fa-child-reaching"></i> Kids Room</a>
+            <a data-cat="pooja"><i class="fa-solid fa-om"></i> Pooja Room</a>
+            <a data-cat="ceiling"><i class="fa-solid fa-layer-group"></i> Ceiling</a>
+            <a data-cat="mouldings"><i class="fa-solid fa-border-all"></i> Mouldings</a>
+          </div>
+          <!-- By Design -->
+          <div class="nav-sub1-row" id="byDesignToggle">
+            <span><i class="fa-solid fa-palette" style="margin-right:6px;color:#0f5132"></i> By Design</span>
+            <i class="fa-solid fa-chevron-down chevron2"></i>
+          </div>
+          <div class="nav-sub2-menu" id="byDesignMenu">
+            <a data-cat="floral"><i class="fa-solid fa-leaf"></i> Floral</a>
+            <a data-cat="tropical"><i class="fa-solid fa-tree"></i> Tropical</a>
+            <a data-cat="texture3d"><i class="fa-solid fa-cube"></i> 3D &amp; Texture</a>
+            <a data-cat="abstract"><i class="fa-solid fa-circle-half-stroke"></i> Abstract</a>
+            <a data-cat="nature"><i class="fa-solid fa-mountain-sun"></i> Nature</a>
+            <a data-cat="office"><i class="fa-solid fa-building"></i> Office</a>
+            <a data-cat="chinoiserie"><i class="fa-solid fa-yin-yang"></i> Chinoiserie</a>
+            <a data-cat="buddha"><i class="fa-solid fa-peace"></i> Buddha</a>
+            <a data-cat="god"><i class="fa-solid fa-om"></i> God</a>
+            <a data-cat="peacock"><i class="fa-solid fa-feather"></i> Peacock</a>
+            <a data-cat="kidsdesign"><i class="fa-solid fa-star"></i> Kids</a>
+            <a data-cat="ethnic"><i class="fa-solid fa-dharmachakra"></i> Ethnic</a>
+            <a data-cat="grooming"><i class="fa-solid fa-scissors"></i> Grooming</a>
+            <a data-cat="mandala"><i class="fa-solid fa-circle-dot"></i> Mandala</a>
+            <a data-cat="mandir"><i class="fa-solid fa-place-of-worship"></i> Mandir</a>
+            <a data-cat="stripes"><i class="fa-solid fa-bars"></i> Stripes</a>
+            <a data-cat="framemouldings"><i class="fa-solid fa-border-style"></i> Frame Mouldings</a>
+          </div>
+          <!-- Wallpaper Rolls -->
           <a data-nav="rolls"><i class="fa-solid fa-scroll"></i> Wallpaper Rolls</a>
-          <a data-nav="premium"><i class="fa-solid fa-gem"></i> Premium Collection</a>
-          <a data-nav="kids"><i class="fa-solid fa-child-reaching"></i> Kids Collection</a>
-          <a data-nav="office"><i class="fa-solid fa-building"></i> Office / Commercial</a>
         </div>
 
         <!-- Calculator -->
@@ -704,31 +775,88 @@ section{padding:64px 0}
         <h2><span class="underline">Explore Top Categories</span></h2>
         <p>Find the perfect wallpaper for your space</p>
       </div>
-      <div class="cat-grid">
-        <a class="cat-card" data-cat="customized">
-          <img src="https://images.unsplash.com/photo-1615875605825-5eb9bb5d52ac?w=900&q=80" alt="Customized Wallpapers">
-          <div class="cat-content"><span class="cat-icon"><i class="fa-solid fa-pen-ruler"></i></span><h3>Customized Wallpapers</h3><span>Your wall, your design</span></div>
-        </a>
-        <a class="cat-card" data-cat="rolls">
-          <img src="https://images.unsplash.com/photo-1618220252344-8ec99ec624b1?w=900&q=80" alt="Wallpaper Rolls">
-          <div class="cat-content"><span class="cat-icon"><i class="fa-solid fa-scroll"></i></span><h3>Wallpaper Rolls</h3><span>Ready designs in rolls</span></div>
-        </a>
-        <a class="cat-card" data-cat="premium">
-          <img src="https://images.unsplash.com/photo-1618219740975-d40978e5fdce?w=900&q=80" alt="Premium Collection">
-          <div class="cat-content"><span class="cat-icon"><i class="fa-solid fa-gem"></i></span><h3>Premium Collection</h3><span>Luxury & exclusive designs</span></div>
-        </a>
-        <a class="cat-card" data-cat="kids">
-          <img src="https://images.unsplash.com/photo-1558877385-81a1c7e67d72?w=900&q=80" alt="Kids Collection">
-          <div class="cat-content"><span class="cat-icon"><i class="fa-solid fa-child-reaching"></i></span><h3>Kids Collection</h3><span>Fun & colourful designs</span></div>
-        </a>
-        <a class="cat-card" data-cat="office">
-          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&q=80" alt="Office / Commercial">
-          <div class="cat-content"><span class="cat-icon"><i class="fa-solid fa-building"></i></span><h3>Office / Commercial</h3><span>Professional spaces</span></div>
-        </a>
-        <a class="cat-card" data-cat="work">
-          <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=900&q=80" alt="Our Work">
-          <div class="cat-content"><span class="cat-icon"><i class="fa-solid fa-images"></i></span><h3>Our Work</h3><span>Real home transformations</span></div>
-        </a>
+      <!-- Browse by Room -->
+      <div class="browse-section">
+        <div class="browse-header">
+          <h3><i class="fa-solid fa-couch"></i> Browse by Room</h3>
+          <span class="view-all" data-cat="living">View all <i class="fa-solid fa-arrow-right"></i></span>
+        </div>
+        <div class="sub-cat-grid">
+          <div class="sub-cat-card" data-cat="living">
+            <div class="sc-img"><img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=500&q=80" alt="Living Room"></div>
+            <div class="sc-info"><span class="sc-icon"><i class="fa-solid fa-couch"></i></span><div class="sc-text"><h4>Living Room</h4><span>150+ Designs</span></div></div>
+          </div>
+          <div class="sub-cat-card" data-cat="bedroom">
+            <div class="sc-img"><img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=500&q=80" alt="Bedroom"></div>
+            <div class="sc-info"><span class="sc-icon"><i class="fa-solid fa-bed"></i></span><div class="sc-text"><h4>Bedroom</h4><span>120+ Designs</span></div></div>
+          </div>
+          <div class="sub-cat-card" data-cat="kidsroom">
+            <div class="sc-img"><img src="https://images.unsplash.com/photo-1558877385-81a1c7e67d72?w=500&q=80" alt="Kids Room"></div>
+            <div class="sc-info"><span class="sc-icon"><i class="fa-solid fa-child-reaching"></i></span><div class="sc-text"><h4>Kids Room</h4><span>80+ Designs</span></div></div>
+          </div>
+          <div class="sub-cat-card" data-cat="pooja">
+            <div class="sc-img"><img src="https://images.unsplash.com/photo-1609167830220-7164aa360951?w=500&q=80" alt="Pooja Room"></div>
+            <div class="sc-info"><span class="sc-icon"><i class="fa-solid fa-om"></i></span><div class="sc-text"><h4>Pooja Room</h4><span>60+ Designs</span></div></div>
+          </div>
+          <div class="sub-cat-card" data-cat="ceiling">
+            <div class="sc-img"><img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=500&q=80" alt="Ceiling"></div>
+            <div class="sc-info"><span class="sc-icon"><i class="fa-solid fa-layer-group"></i></span><div class="sc-text"><h4>Ceiling</h4><span>40+ Designs</span></div></div>
+          </div>
+          <div class="sub-cat-card" data-cat="mouldings">
+            <div class="sc-img"><img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?w=500&q=80" alt="Mouldings"></div>
+            <div class="sc-info"><span class="sc-icon"><i class="fa-solid fa-border-all"></i></span><div class="sc-text"><h4>Mouldings</h4><span>30+ Designs</span></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Browse by Design -->
+      <div class="browse-section">
+        <div class="browse-header">
+          <h3><i class="fa-solid fa-palette"></i> Browse by Design</h3>
+          <span class="view-all" data-cat="floral">View all <i class="fa-solid fa-arrow-right"></i></span>
+        </div>
+        <div class="sub-cat-grid">
+          <div class="sub-cat-card" data-cat="floral">
+            <div class="sc-img"><img src="https://images.unsplash.com/photo-1520004434532-668416a08753?w=500&q=80" alt="Floral"></div>
+            <div class="sc-info"><span class="sc-icon"><i class="fa-solid fa-leaf"></i></span><div class="sc-text"><h4>Floral</h4><span>210+ Designs</span></div></div>
+          </div>
+          <div class="sub-cat-card" data-cat="tropical">
+            <div class="sc-img"><img src="https://images.unsplash.com/photo-1541123437800-1bb1317badc2?w=500&q=80" alt="Tropical"></div>
+            <div class="sc-info"><span class="sc-icon"><i class="fa-solid fa-tree"></i></span><div class="sc-text"><h4>Tropical</h4><span>180+ Designs</span></div></div>
+          </div>
+          <div class="sub-cat-card" data-cat="texture3d">
+            <div class="sc-img"><img src="https://images.unsplash.com/photo-1567016432779-094069958ea5?w=500&q=80" alt="3D &amp; Texture"></div>
+            <div class="sc-info"><span class="sc-icon"><i class="fa-solid fa-cube"></i></span><div class="sc-text"><h4>3D &amp; Texture</h4><span>185+ Designs</span></div></div>
+          </div>
+          <div class="sub-cat-card" data-cat="abstract">
+            <div class="sc-img"><img src="https://images.unsplash.com/photo-1557682250-33bd709cbe85?w=500&q=80" alt="Abstract"></div>
+            <div class="sc-info"><span class="sc-icon"><i class="fa-solid fa-circle-half-stroke"></i></span><div class="sc-text"><h4>Abstract</h4><span>168+ Designs</span></div></div>
+          </div>
+          <div class="sub-cat-card" data-cat="nature">
+            <div class="sc-img"><img src="https://images.unsplash.com/photo-1615875605825-5eb9bb5d52ac?w=500&q=80" alt="Nature"></div>
+            <div class="sc-info"><span class="sc-icon"><i class="fa-solid fa-mountain-sun"></i></span><div class="sc-text"><h4>Nature</h4><span>140+ Designs</span></div></div>
+          </div>
+          <div class="sub-cat-card" data-cat="chinoiserie">
+            <div class="sc-img"><img src="https://images.unsplash.com/photo-1563298723-dcfebaa392e3?w=500&q=80" alt="Chinoiserie"></div>
+            <div class="sc-info"><span class="sc-icon"><i class="fa-solid fa-yin-yang"></i></span><div class="sc-text"><h4>Chinoiserie</h4><span>95+ Designs</span></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Wallpaper Rolls -->
+      <div class="browse-section">
+        <div class="browse-header">
+          <h3><i class="fa-solid fa-scroll"></i> Wallpaper Rolls</h3>
+          <span class="view-all" data-cat="rolls">View all <i class="fa-solid fa-arrow-right"></i></span>
+        </div>
+        <div class="rolls-big-card" data-cat="rolls">
+          <img src="https://images.unsplash.com/photo-1618220252344-8ec99ec624b1?w=1200&q=80" alt="Wallpaper Rolls">
+          <div class="rbc-text">
+            <h3>Ready-to-Install Rolls</h3>
+            <p>200+ premium designs — delivered to your door</p>
+            <a class="btn btn-gold">Explore Rolls <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -2080,15 +2208,35 @@ section{padding:64px 0}
 const STARS = '★★★★★';
 
 const CATEGORIES = {
-  customized: { title:'Customized Wallpapers', desc:"Your wall, your story. Share your wall photo or idea and we'll create a wallpaper that's truly yours." },
-  rolls:      { title:'Wallpaper Rolls',       desc:'Premium quality wallpaper rolls in beautiful designs and textures. Ready-to-install.' },
-  room:       { title:'Shop by Room',          desc:'Browse wallpapers organized by room — living room, bedroom, kids room and office.' },
-  premium:    { title:'Premium Collection',    desc:'Luxury wallpapers for premium spaces — finest materials, exclusive designs.' },
-  kids:       { title:'Kids Collection',       desc:'Fun, creative and colourful wallpapers to bring magic to your kids room.' },
-  office:     { title:'Office / Commercial',   desc:'Professional, durable wallpapers built for offices and commercial spaces.' },
-  living:     { title:'Living Room Wallpapers',desc:'Designs that elevate your living room — from calm tropical to bold abstracts.' },
-  bedroom:    { title:'Bedroom Wallpapers',    desc:'Soothing and romantic designs to make your bedroom truly restful.' },
-  work:       { title:'Our Work',              desc:'A glimpse of real walls we have transformed across India.' }
+  customized:    { title:'Customized Wallpapers',    desc:"Your wall, your story. Share your wall photo or idea and we'll create a wallpaper that's truly yours." },
+  rolls:         { title:'Wallpaper Rolls',          desc:'Premium quality wallpaper rolls in beautiful designs and textures. Ready-to-install.' },
+  room:          { title:'Shop by Room',             desc:'Browse wallpapers organized by room — living room, bedroom, kids room and office.' },
+  premium:       { title:'Premium Collection',       desc:'Luxury wallpapers for premium spaces — finest materials, exclusive designs.' },
+  kids:          { title:'Kids Collection',          desc:'Fun, creative and colourful wallpapers to bring magic to your kids room.' },
+  office:        { title:'Office / Commercial',      desc:'Professional, durable wallpapers built for offices and commercial spaces.' },
+  living:        { title:'Living Room Wallpapers',   desc:'Designs that elevate your living room — from calm tropical to bold abstracts.' },
+  bedroom:       { title:'Bedroom Wallpapers',       desc:'Soothing and romantic designs to make your bedroom truly restful.' },
+  work:          { title:'Our Work',                 desc:'A glimpse of real walls we have transformed across India.' },
+  kidsroom:      { title:'Kids Room Wallpapers',     desc:'Bright, playful and safe wallpapers to create a magical world for your little ones.' },
+  pooja:         { title:'Pooja Room Wallpapers',    desc:'Divine and spiritual designs to create a serene and sacred space for your pooja room.' },
+  ceiling:       { title:'Ceiling Wallpapers',       desc:'Transform your ceiling with elegant patterns, sky murals and decorative designs.' },
+  mouldings:     { title:'Moulding Wallpapers',      desc:'Classic and contemporary moulding designs to add architectural elegance to any room.' },
+  floral:        { title:'Floral Wallpapers',        desc:'Bloom with beauty — stunning floral wallpapers in every style from delicate to bold.' },
+  tropical:      { title:'Tropical Wallpapers',      desc:'Lush tropical foliage, palm leaves and jungle vibes to bring the outdoors inside.' },
+  texture3d:     { title:'3D & Texture Wallpapers',  desc:'Bold three-dimensional and textured designs that add depth and character to walls.' },
+  abstract:      { title:'Abstract Wallpapers',      desc:'Artistic, expressive abstract designs in a wide range of colours and styles.' },
+  nature:        { title:'Nature Wallpapers',        desc:'Mountains, forests, rivers and skies — bring the beauty of nature to your walls.' },
+  chinoiserie:   { title:'Chinoiserie Wallpapers',   desc:'Elegant Chinese-inspired art with birds, florals and nature in classic blue-and-white or colourful styles.' },
+  buddha:        { title:'Buddha Wallpapers',        desc:'Peaceful and meditative Buddha art to bring calm and positivity to any space.' },
+  god:           { title:'God & Spiritual Wallpapers',desc:'Divine imagery and spiritual art featuring deities, temples and sacred symbols.' },
+  peacock:       { title:'Peacock Wallpapers',       desc:'Majestic peacock designs in rich blues, greens and golds — stunning feature wall art.' },
+  kidsdesign:    { title:'Kids Design Wallpapers',   desc:'Cartoon, fairy-tale and adventure themed wallpapers designed to delight children.' },
+  ethnic:        { title:'Ethnic Wallpapers',        desc:'Rich Indian ethnic patterns, block prints and traditional motifs for a cultural touch.' },
+  grooming:      { title:'Grooming Salon Wallpapers',desc:'Trendy, stylish wallpapers designed for salons, barbershops and grooming studios.' },
+  mandala:       { title:'Mandala Wallpapers',       desc:'Intricate mandala patterns in vibrant colours for a zen and artistic atmosphere.' },
+  mandir:        { title:'Mandir Wallpapers',        desc:'Sacred temple art and devotional designs ideal for home mandirs and prayer rooms.' },
+  stripes:       { title:'Stripe Wallpapers',        desc:'Classic to contemporary stripe wallpapers in every width, colour and style.' },
+  framemouldings:{ title:'Frame Moulding Wallpapers',desc:'Elegant frame and panel moulding designs to add a classic architectural look to walls.' },
 };
 
 /*
@@ -3224,6 +3372,270 @@ room: [
 
 ],
 
+  // ===== BY ROOM SUBCATEGORIES =====
+  kidsroom: [
+    { id:200, n:'Unicorn Dreams',       sp:6499,  p:149, img:'https://images.unsplash.com/photo-1558877385-81a1c7e67d72?w=700&q=80',  t:'Cartoon',  r:'Kids Room', m:'Matte',  c:'Pink' },
+    { id:201, n:'Jungle Safari Mural',  sp:6999,  p:155, img:'https://images.unsplash.com/photo-1574158622682-e40e69881006?w=700&q=80', t:'Nature',    r:'Kids Room', m:'Matte',  c:'Green' },
+    { id:202, n:'Space Explorer',       sp:7299,  p:159, img:'https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=700&q=80', t:'Abstract',  r:'Kids Room', m:'Satin',  c:'Blue' },
+    { id:203, n:'Under the Sea',        sp:6799,  p:152, img:'https://images.unsplash.com/photo-1468581264429-2548ef9eb732?w=700&q=80', t:'Cartoon',   r:'Kids Room', m:'Matte',  c:'Blue' },
+    { id:204, n:'Dinosaur World',       sp:6599,  p:148, img:'https://images.unsplash.com/photo-1535378620166-273708d44e4c?w=700&q=80', t:'Cartoon',   r:'Kids Room', m:'Matte',  c:'Green' },
+    { id:205, n:'Fairy Tale Forest',    sp:7199,  p:157, img:'https://images.unsplash.com/photo-1557858310-9052820906f7?w=700&q=80', t:'Nature',    r:'Kids Room', m:'Satin',  c:'Pink' },
+    { id:206, n:'Race Track Fun',       sp:6299,  p:145, img:'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=700&q=80', t:'Cartoon',   r:'Kids Room', m:'Matte',  c:'Multicolor' },
+    { id:207, n:'Cloud Castle',         sp:6899,  p:153, img:'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=700&q=80', t:'Fantasy',   r:'Kids Room', m:'Matte',  c:'White' },
+    { id:208, n:'Adventure Maps',       sp:7499,  p:161, img:'https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=700&q=80', t:'Abstract',  r:'Kids Room', m:'Satin',  c:'Brown' },
+    { id:209, n:'Rainbow Balloons',     sp:5999,  p:139, img:'https://images.unsplash.com/photo-1547036967-23d11aacaee0?w=700&q=80', t:'Cartoon',   r:'Kids Room', m:'Matte',  c:'Multicolor' },
+    { id:210, n:'Princess Palace',      sp:7099,  p:156, img:'https://images.unsplash.com/photo-1487260211189-670c54da558d?w=700&q=80', t:'Fantasy',   r:'Kids Room', m:'Satin',  c:'Pink' },
+  ],
+  pooja: [
+    { id:220, n:'Lotus Mandala Shrine', sp:7999,  p:169, img:'https://images.unsplash.com/photo-1609167830220-7164aa360951?w=700&q=80', t:'Spiritual', r:'Pooja Room', m:'Matte',  c:'Gold' },
+    { id:221, n:'Om Namah Shivaya',     sp:8499,  p:175, img:'https://images.unsplash.com/photo-1605902711622-cfb43c4437b5?w=700&q=80', t:'Spiritual', r:'Pooja Room', m:'Satin',  c:'Saffron' },
+    { id:222, n:'Ganesh Blessing',      sp:7799,  p:165, img:'https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=700&q=80', t:'Spiritual', r:'Pooja Room', m:'Matte',  c:'Orange' },
+    { id:223, n:'Marble Temple Arch',   sp:9499,  p:185, img:'https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?w=700&q=80', t:'Luxury',    r:'Pooja Room', m:'Satin',  c:'White' },
+    { id:224, n:'Krishna Flute Art',    sp:8199,  p:171, img:'https://images.unsplash.com/photo-1544980919-e17526d7c03b?w=700&q=80', t:'Spiritual', r:'Pooja Room', m:'Matte',  c:'Blue' },
+    { id:225, n:'Saraswati Grace',      sp:7599,  p:163, img:'https://images.unsplash.com/photo-1569429593410-b498b3fb3387?w=700&q=80', t:'Spiritual', r:'Pooja Room', m:'Satin',  c:'White' },
+    { id:226, n:'Durga Shakti Mural',   sp:8799,  p:179, img:'https://images.unsplash.com/photo-1548013146-72479768bada?w=700&q=80', t:'Spiritual', r:'Pooja Room', m:'Matte',  c:'Red' },
+    { id:227, n:'Laxmi Golden Blessings',sp:9199, p:183, img:'https://images.unsplash.com/photo-1599946347371-68eb71b16afc?w=700&q=80', t:'Luxury',    r:'Pooja Room', m:'Satin',  c:'Gold' },
+    { id:228, n:'Radha Krishna Eternal',sp:8299,  p:173, img:'https://images.unsplash.com/photo-1518709766631-a6a7f45921c3?w=700&q=80', t:'Spiritual', r:'Pooja Room', m:'Matte',  c:'Blue' },
+    { id:229, n:'Sacred Lotus Garden',  sp:7299,  p:158, img:'https://images.unsplash.com/photo-1520004434532-668416a08753?w=700&q=80', t:'Nature',    r:'Pooja Room', m:'Matte',  c:'Pink' },
+    { id:230, n:'Hanuman Shakti Wall',  sp:8099,  p:169, img:'https://images.unsplash.com/photo-1617958547060-3013e89f2eff?w=700&q=80', t:'Spiritual', r:'Pooja Room', m:'Satin',  c:'Orange' },
+  ],
+  ceiling: [
+    { id:240, n:'Starry Night Ceiling', sp:9999,  p:195, img:'https://images.unsplash.com/photo-1511184070714-52e4a2cd6a88?w=700&q=80', t:'Abstract',  r:'Ceiling',    m:'Satin',  c:'Blue' },
+    { id:241, n:'Clouds & Sky',         sp:8799,  p:179, img:'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=700&q=80', t:'Nature',    r:'Ceiling',    m:'Matte',  c:'Blue' },
+    { id:242, n:'Ornate Floral Canopy', sp:11499, p:215, img:'https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=700&q=80', t:'Floral',    r:'Ceiling',    m:'Satin',  c:'Gold' },
+    { id:243, n:'Geometric Dome Art',   sp:10299, p:199, img:'https://images.unsplash.com/photo-1567016432779-094069958ea5?w=700&q=80', t:'Geometric', r:'Ceiling',    m:'Satin',  c:'Cream' },
+    { id:244, n:'Royal Palace Ceiling', sp:12999, p:239, img:'https://images.unsplash.com/photo-1513694203232-719a280e022f?w=700&q=80', t:'Luxury',    r:'Ceiling',    m:'Satin',  c:'Gold' },
+    { id:245, n:'Teal Marble Canopy',   sp:9499,  p:185, img:'https://images.unsplash.com/photo-1618219740975-d40978e5fdce?w=700&q=80', t:'Luxury',    r:'Ceiling',    m:'Satin',  c:'Teal' },
+    { id:246, n:'Mandala Sun Burst',    sp:9799,  p:189, img:'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=700&q=80', t:'Ethnic',    r:'Ceiling',    m:'Matte',  c:'Multicolor' },
+    { id:247, n:'Peacock Feather Vault',sp:11299, p:213, img:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=80', t:'Nature',    r:'Ceiling',    m:'Satin',  c:'Blue' },
+    { id:248, n:'Forest Canopy Mural',  sp:8999,  p:181, img:'https://images.unsplash.com/photo-1547036967-23d11aacaee0?w=700&q=80', t:'Nature',    r:'Ceiling',    m:'Matte',  c:'Green' },
+    { id:249, n:'Gold Leaf Filigree',   sp:13499, p:249, img:'https://images.unsplash.com/photo-1615875605825-5eb9bb5d52ac?w=700&q=80', t:'Luxury',    r:'Ceiling',    m:'Satin',  c:'Gold' },
+    { id:250, n:'Pastel Sky Dream',     sp:8499,  p:175, img:'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=700&q=80', t:'Abstract',  r:'Ceiling',    m:'Matte',  c:'Beige' },
+  ],
+  mouldings: [
+    { id:260, n:'Classic Panel Frame',  sp:7499,  p:161, img:'https://images.unsplash.com/photo-1513694203232-719a280e022f?w=700&q=80', t:'Classic',   r:'Living Room', m:'Matte', c:'White' },
+    { id:261, n:'Victorian Border',     sp:8299,  p:173, img:'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=700&q=80', t:'Classic',   r:'Living Room', m:'Satin', c:'Cream' },
+    { id:262, n:'Modern Wainscoting',   sp:7799,  p:165, img:'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=700&q=80', t:'Modern',    r:'Bedroom',     m:'Matte', c:'Grey' },
+    { id:263, n:'French Boiserie',      sp:9299,  p:183, img:'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=700&q=80', t:'Luxury',    r:'Living Room', m:'Satin', c:'White' },
+    { id:264, n:'Chair Rail Classic',   sp:6999,  p:155, img:'https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=700&q=80', t:'Classic',   r:'Living Room', m:'Matte', c:'Beige' },
+    { id:265, n:'Heritage Crown Print', sp:8599,  p:177, img:'https://images.unsplash.com/photo-1615875605825-5eb9bb5d52ac?w=700&q=80', t:'Classic',   r:'Bedroom',     m:'Satin', c:'Gold' },
+    { id:266, n:'Raised Panel Art',     sp:9999,  p:195, img:'https://images.unsplash.com/photo-1618219740975-d40978e5fdce?w=700&q=80', t:'Luxury',    r:'Living Room', m:'Satin', c:'White' },
+    { id:267, n:'Dado Rail Elegance',   sp:7199,  p:157, img:'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=700&q=80', t:'Classic',   r:'Bedroom',     m:'Matte', c:'Grey' },
+    { id:268, n:'Baroque Panel',        sp:10499, p:205, img:'https://images.unsplash.com/photo-1567016432779-094069958ea5?w=700&q=80', t:'Luxury',    r:'Living Room', m:'Satin', c:'Gold' },
+    { id:269, n:'Slim Bead Moulding',   sp:6799,  p:152, img:'https://images.unsplash.com/photo-1557682250-33bd709cbe85?w=700&q=80', t:'Modern',    r:'Bedroom',     m:'Matte', c:'White' },
+    { id:270, n:'Egg & Dart Border',    sp:8799,  p:179, img:'https://images.unsplash.com/photo-1541123437800-1bb1317badc2?w=700&q=80', t:'Classic',   r:'Living Room', m:'Satin', c:'Cream' },
+  ],
+
+  // ===== BY DESIGN SUBCATEGORIES =====
+  floral: [
+    { id:280, n:'English Rose Garden',  sp:7499,  p:161, img:'https://images.unsplash.com/photo-1520004434532-668416a08753?w=700&q=80',  t:'Floral',   r:'Bedroom',     m:'Matte',  c:'Pink' },
+    { id:281, n:'Peony Bloom',          sp:7999,  p:169, img:'https://images.unsplash.com/photo-1490750967868-88df5691cc3f?w=700&q=80',  t:'Floral',   r:'Living Room', m:'Satin',  c:'Pink' },
+    { id:282, n:'Cherry Blossom Mural', sp:8499,  p:175, img:'https://images.unsplash.com/photo-1554977086-a37b27c48f27?w=700&q=80',  t:'Floral',   r:'Bedroom',     m:'Satin',  c:'Pink' },
+    { id:283, n:'Wild Meadow Print',    sp:6799,  p:152, img:'https://images.unsplash.com/photo-1490750967868-88df5691cc3f?w=700&q=80',  t:'Floral',   r:'Living Room', m:'Matte',  c:'Multicolor' },
+    { id:284, n:'Dahlia Bouquet',       sp:7299,  p:158, img:'https://images.unsplash.com/photo-1588880331179-bc9b93a8cb5e?w=700&q=80',  t:'Floral',   r:'Bedroom',     m:'Matte',  c:'Red' },
+    { id:285, n:'Botanical Sketch',     sp:6999,  p:155, img:'https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=700&q=80',  t:'Floral',   r:'Living Room', m:'Matte',  c:'Green' },
+    { id:286, n:'Magnolia Blossom',     sp:8299,  p:173, img:'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=700&q=80',  t:'Floral',   r:'Bedroom',     m:'Satin',  c:'White' },
+    { id:287, n:'Vintage Floral Toile', sp:8799,  p:179, img:'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=700&q=80',  t:'Floral',   r:'Bedroom',     m:'Satin',  c:'Blue' },
+    { id:288, n:'Sunflower Field',      sp:6499,  p:148, img:'https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=700&q=80',  t:'Floral',   r:'Living Room', m:'Matte',  c:'Yellow' },
+    { id:289, n:'Tropical Hibiscus',    sp:7799,  p:165, img:'https://images.unsplash.com/photo-1541123437800-1bb1317badc2?w=700&q=80',  t:'Floral',   r:'Bedroom',     m:'Satin',  c:'Orange' },
+    { id:290, n:'Pastel Poppy Garden',  sp:7099,  p:156, img:'https://images.unsplash.com/photo-1490750967868-88df5691cc3f?w=700&q=80',  t:'Floral',   r:'Living Room', m:'Matte',  c:'Pink' },
+  ],
+  tropical: [
+    { id:300, n:'Palm Leaf Paradise',   sp:7999,  p:169, img:'https://images.unsplash.com/photo-1541123437800-1bb1317badc2?w=700&q=80',  t:'Tropical', r:'Living Room', m:'Satin',  c:'Green' },
+    { id:301, n:'Banana Leaf Mural',    sp:8499,  p:175, img:'https://images.unsplash.com/photo-1473973916407-50a5d47b4f5b?w=700&q=80',  t:'Tropical', r:'Living Room', m:'Matte',  c:'Green' },
+    { id:302, n:'Monstera Jungle',      sp:7499,  p:161, img:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=80',  t:'Tropical', r:'Bedroom',     m:'Matte',  c:'Green' },
+    { id:303, n:'Bird of Paradise',     sp:8799,  p:179, img:'https://images.unsplash.com/photo-1547036967-23d11aacaee0?w=700&q=80',  t:'Tropical', r:'Living Room', m:'Satin',  c:'Orange' },
+    { id:304, n:'Toucan in Foliage',    sp:9299,  p:185, img:'https://images.unsplash.com/photo-1536147116438-62679a5e01f2?w=700&q=80',  t:'Tropical', r:'Bedroom',     m:'Satin',  c:'Multicolor' },
+    { id:305, n:'Jungle Canopy Mural',  sp:8199,  p:171, img:'https://images.unsplash.com/photo-1478860409698-8707f313ee8b?w=700&q=80',  t:'Tropical', r:'Living Room', m:'Matte',  c:'Green' },
+    { id:306, n:'Exotic Fern Wall',     sp:7299,  p:158, img:'https://images.unsplash.com/photo-1574158622682-e40e69881006?w=700&q=80',  t:'Tropical', r:'Bedroom',     m:'Matte',  c:'Green' },
+    { id:307, n:'Hawaii Surf Botanical',sp:7799,  p:165, img:'https://images.unsplash.com/photo-1523289333742-be1143f6b766?w=700&q=80',  t:'Tropical', r:'Living Room', m:'Satin',  c:'Blue' },
+    { id:308, n:'Golden Bamboo Print',  sp:8099,  p:169, img:'https://images.unsplash.com/photo-1615875605825-5eb9bb5d52ac?w=700&q=80',  t:'Tropical', r:'Bedroom',     m:'Matte',  c:'Gold' },
+    { id:309, n:'Rainforest Dawn',      sp:9499,  p:187, img:'https://images.unsplash.com/photo-1518709766631-a6a7f45921c3?w=700&q=80',  t:'Tropical', r:'Living Room', m:'Satin',  c:'Green' },
+    { id:310, n:'Flamingo Garden',      sp:7599,  p:163, img:'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=700&q=80',  t:'Tropical', r:'Bedroom',     m:'Satin',  c:'Pink' },
+  ],
+  texture3d: [
+    { id:320, n:'Concrete Loft Wall',   sp:7299,  p:158, img:'https://images.unsplash.com/photo-1567016432779-094069958ea5?w=700&q=80',  t:'Texture',  r:'Living Room', m:'Matte',  c:'Grey' },
+    { id:321, n:'Brick Effect Premium', sp:6999,  p:155, img:'https://images.unsplash.com/photo-1518709766631-a6a7f45921c3?w=700&q=80',  t:'Texture',  r:'Living Room', m:'Matte',  c:'Brown' },
+    { id:322, n:'Geometric 3D Cubes',   sp:8299,  p:173, img:'https://images.unsplash.com/photo-1557682250-33bd709cbe85?w=700&q=80',  t:'Geometric',r:'Office',      m:'Satin',  c:'White' },
+    { id:323, n:'Stone Cladding Print', sp:7799,  p:165, img:'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=700&q=80',  t:'Texture',  r:'Living Room', m:'Matte',  c:'Grey' },
+    { id:324, n:'Hex Tile 3D',          sp:7499,  p:161, img:'https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=700&q=80',  t:'Geometric',r:'Bedroom',     m:'Satin',  c:'White' },
+    { id:325, n:'Wave Relief Plaster',  sp:8799,  p:179, img:'https://images.unsplash.com/photo-1615875605825-5eb9bb5d52ac?w=700&q=80',  t:'Texture',  r:'Living Room', m:'Matte',  c:'White' },
+    { id:326, n:'Wood Grain Realistic', sp:7099,  p:156, img:'https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=700&q=80',  t:'Texture',  r:'Bedroom',     m:'Matte',  c:'Brown' },
+    { id:327, n:'Metallic Diamond 3D',  sp:9499,  p:185, img:'https://images.unsplash.com/photo-1618219740975-d40978e5fdce?w=700&q=80',  t:'Luxury',   r:'Living Room', m:'Satin',  c:'Silver' },
+    { id:328, n:'Leather Texture Art',  sp:8499,  p:175, img:'https://images.unsplash.com/photo-1557682250-33bd709cbe85?w=700&q=80',  t:'Texture',  r:'Office',      m:'Matte',  c:'Brown' },
+    { id:329, n:'3D Zigzag Print',      sp:7599,  p:163, img:'https://images.unsplash.com/photo-1567016432779-094069958ea5?w=700&q=80',  t:'Geometric',r:'Bedroom',     m:'Satin',  c:'Grey' },
+    { id:330, n:'Pebble Stone Effect',  sp:6799,  p:152, img:'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=700&q=80',  t:'Texture',  r:'Living Room', m:'Matte',  c:'Beige' },
+  ],
+  abstract: [
+    { id:340, n:'Ink Wash Splatter',    sp:7499,  p:161, img:'https://images.unsplash.com/photo-1557682250-33bd709cbe85?w=700&q=80',  t:'Abstract', r:'Living Room', m:'Matte',  c:'Multicolor' },
+    { id:341, n:'Fluid Art Sunset',     sp:8299,  p:173, img:'https://images.unsplash.com/photo-1523289333742-be1143f6b766?w=700&q=80',  t:'Abstract', r:'Bedroom',     m:'Satin',  c:'Orange' },
+    { id:342, n:'Geometric Shapes Art', sp:7799,  p:165, img:'https://images.unsplash.com/photo-1567016432779-094069958ea5?w=700&q=80',  t:'Abstract', r:'Living Room', m:'Matte',  c:'Blue' },
+    { id:343, n:'Watercolor Wash',      sp:7099,  p:156, img:'https://images.unsplash.com/photo-1490750967868-88df5691cc3f?w=700&q=80',  t:'Abstract', r:'Bedroom',     m:'Matte',  c:'Pink' },
+    { id:344, n:'Color Block Modern',   sp:7999,  p:169, img:'https://images.unsplash.com/photo-1617958547060-3013e89f2eff?w=700&q=80',  t:'Abstract', r:'Office',      m:'Satin',  c:'Multicolor' },
+    { id:345, n:'Dark Matter Galaxy',   sp:8799,  p:179, img:'https://images.unsplash.com/photo-1511184070714-52e4a2cd6a88?w=700&q=80',  t:'Abstract', r:'Bedroom',     m:'Satin',  c:'Black' },
+    { id:346, n:'Pastel Haze Mural',    sp:6999,  p:155, img:'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=700&q=80',  t:'Abstract', r:'Bedroom',     m:'Matte',  c:'Beige' },
+    { id:347, n:'Bold Brushstroke',     sp:8499,  p:175, img:'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=700&q=80',  t:'Abstract', r:'Living Room', m:'Matte',  c:'Black' },
+    { id:348, n:'Neon Graffiti Wall',   sp:7599,  p:163, img:'https://images.unsplash.com/photo-1557682250-33bd709cbe85?w=700&q=80',  t:'Abstract', r:'Office',      m:'Matte',  c:'Multicolor' },
+    { id:349, n:'Smoke & Shadow Art',   sp:9299,  p:183, img:'https://images.unsplash.com/photo-1615875605825-5eb9bb5d52ac?w=700&q=80',  t:'Abstract', r:'Bedroom',     m:'Satin',  c:'Grey' },
+    { id:350, n:'Marble Swirl Gold',    sp:10499, p:205, img:'https://images.unsplash.com/photo-1618219740975-d40978e5fdce?w=700&q=80',  t:'Luxury',   r:'Living Room', m:'Satin',  c:'Gold' },
+  ],
+  nature: [
+    { id:360, n:'Forest At Dawn',       sp:7999,  p:169, img:'https://images.unsplash.com/photo-1615875605825-5eb9bb5d52ac?w=700&q=80',  t:'Nature',   r:'Living Room', m:'Matte',  c:'Green' },
+    { id:361, n:'Mountain Sunrise Mural',sp:8799, p:179, img:'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=700&q=80',  t:'Nature',   r:'Living Room', m:'Satin',  c:'Blue' },
+    { id:362, n:'Waterfall Serenity',   sp:8299,  p:173, img:'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=700&q=80',  t:'Nature',   r:'Bedroom',     m:'Matte',  c:'Blue' },
+    { id:363, n:'Autumn Forest Walk',   sp:7499,  p:161, img:'https://images.unsplash.com/photo-1478860409698-8707f313ee8b?w=700&q=80',  t:'Nature',   r:'Bedroom',     m:'Matte',  c:'Brown' },
+    { id:364, n:'Snow Capped Peaks',    sp:9299,  p:183, img:'https://images.unsplash.com/photo-1473973916407-50a5d47b4f5b?w=700&q=80',  t:'Nature',   r:'Living Room', m:'Satin',  c:'White' },
+    { id:365, n:'Desert Sand Dunes',    sp:7799,  p:165, img:'https://images.unsplash.com/photo-1523289333742-be1143f6b766?w=700&q=80',  t:'Nature',   r:'Living Room', m:'Matte',  c:'Beige' },
+    { id:366, n:'Cherry Tree Blossom',  sp:8199,  p:171, img:'https://images.unsplash.com/photo-1554977086-a37b27c48f27?w=700&q=80',  t:'Nature',   r:'Bedroom',     m:'Satin',  c:'Pink' },
+    { id:367, n:'Ocean Horizon Mural',  sp:9499,  p:187, img:'https://images.unsplash.com/photo-1468581264429-2548ef9eb732?w=700&q=80',  t:'Nature',   r:'Living Room', m:'Satin',  c:'Blue' },
+    { id:368, n:'Lavender Field',       sp:7299,  p:158, img:'https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=700&q=80',  t:'Nature',   r:'Bedroom',     m:'Matte',  c:'Purple' },
+    { id:369, n:'Green Valley Panorama',sp:8599,  p:177, img:'https://images.unsplash.com/photo-1536147116438-62679a5e01f2?w=700&q=80',  t:'Nature',   r:'Living Room', m:'Matte',  c:'Green' },
+    { id:370, n:'Misty Pine Forest',    sp:8899,  p:181, img:'https://images.unsplash.com/photo-1518709766631-a6a7f45921c3?w=700&q=80',  t:'Nature',   r:'Bedroom',     m:'Satin',  c:'Grey' },
+  ],
+  chinoiserie: [
+    { id:380, n:'Blue Willow Garden',   sp:9299,  p:183, img:'https://images.unsplash.com/photo-1563298723-dcfebaa392e3?w=700&q=80',  t:'Chinoiserie',r:'Living Room',m:'Satin',  c:'Blue' },
+    { id:381, n:'Crane & Blossom',      sp:9999,  p:195, img:'https://images.unsplash.com/photo-1536147116438-62679a5e01f2?w=700&q=80',  t:'Chinoiserie',r:'Bedroom',    m:'Satin',  c:'Blue' },
+    { id:382, n:'Ming Dynasty Mural',   sp:11299, p:213, img:'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=700&q=80',  t:'Chinoiserie',r:'Living Room',m:'Satin',  c:'Blue' },
+    { id:383, n:'Oriental Pagoda',      sp:8799,  p:179, img:'https://images.unsplash.com/photo-1544980919-e17526d7c03b?w=700&q=80',  t:'Chinoiserie',r:'Bedroom',    m:'Matte',  c:'Green' },
+    { id:384, n:'Cherry Blossom Panel', sp:9499,  p:187, img:'https://images.unsplash.com/photo-1554977086-a37b27c48f27?w=700&q=80',  t:'Chinoiserie',r:'Living Room',m:'Satin',  c:'Pink' },
+    { id:385, n:'Koi Fish Painting',    sp:8499,  p:175, img:'https://images.unsplash.com/photo-1468581264429-2548ef9eb732?w=700&q=80',  t:'Chinoiserie',r:'Bedroom',    m:'Satin',  c:'Blue' },
+    { id:386, n:'Bamboo Forest Print',  sp:7999,  p:169, img:'https://images.unsplash.com/photo-1541123437800-1bb1317badc2?w=700&q=80',  t:'Chinoiserie',r:'Living Room',m:'Matte',  c:'Green' },
+    { id:387, n:'Jade & Peony',         sp:9799,  p:191, img:'https://images.unsplash.com/photo-1490750967868-88df5691cc3f?w=700&q=80',  t:'Chinoiserie',r:'Bedroom',    m:'Satin',  c:'Green' },
+    { id:388, n:'Dragon Medallion',     sp:10999, p:209, img:'https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=700&q=80',  t:'Chinoiserie',r:'Living Room',m:'Satin',  c:'Red' },
+    { id:389, n:'Silk Road Botanicals', sp:9199,  p:183, img:'https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=700&q=80',  t:'Chinoiserie',r:'Bedroom',    m:'Matte',  c:'Beige' },
+    { id:390, n:'Tea Garden Scene',     sp:8299,  p:173, img:'https://images.unsplash.com/photo-1523289333742-be1143f6b766?w=700&q=80',  t:'Chinoiserie',r:'Living Room',m:'Satin',  c:'Blue' },
+  ],
+  buddha: [
+    { id:400, n:'Golden Buddha Mural',  sp:9999,  p:195, img:'https://images.unsplash.com/photo-1544980919-e17526d7c03b?w=700&q=80',  t:'Spiritual', r:'Living Room', m:'Satin',  c:'Gold' },
+    { id:401, n:'Meditating Buddha',    sp:8799,  p:179, img:'https://images.unsplash.com/photo-1569429593410-b498b3fb3387?w=700&q=80',  t:'Spiritual', r:'Bedroom',     m:'Matte',  c:'Beige' },
+    { id:402, n:'Zen Garden Buddha',    sp:8299,  p:173, img:'https://images.unsplash.com/photo-1548013146-72479768bada?w=700&q=80',  t:'Spiritual', r:'Living Room', m:'Matte',  c:'Brown' },
+    { id:403, n:'Buddha Lotus Bloom',   sp:9499,  p:187, img:'https://images.unsplash.com/photo-1520004434532-668416a08753?w=700&q=80',  t:'Spiritual', r:'Bedroom',     m:'Satin',  c:'Pink' },
+    { id:404, n:'Floating Bodhisattva', sp:10499, p:205, img:'https://images.unsplash.com/photo-1605902711622-cfb43c4437b5?w=700&q=80',  t:'Luxury',    r:'Living Room', m:'Satin',  c:'Gold' },
+    { id:405, n:'Stone Buddha Wall',    sp:7999,  p:169, img:'https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=700&q=80',  t:'Spiritual', r:'Bedroom',     m:'Matte',  c:'Grey' },
+    { id:406, n:'Buddha Eyes Nepal',    sp:9299,  p:183, img:'https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?w=700&q=80',  t:'Spiritual', r:'Living Room', m:'Satin',  c:'Brown' },
+    { id:407, n:'Dharma Wheel Art',     sp:8499,  p:175, img:'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=700&q=80',  t:'Spiritual', r:'Bedroom',     m:'Matte',  c:'Gold' },
+    { id:408, n:'Bodhi Tree Mural',     sp:8799,  p:179, img:'https://images.unsplash.com/photo-1615875605825-5eb9bb5d52ac?w=700&q=80',  t:'Spiritual', r:'Living Room', m:'Matte',  c:'Green' },
+    { id:409, n:'Peaceful Sangha',      sp:7799,  p:165, img:'https://images.unsplash.com/photo-1518709766631-a6a7f45921c3?w=700&q=80',  t:'Spiritual', r:'Bedroom',     m:'Satin',  c:'Orange' },
+    { id:410, n:'Three Buddhas Panel',  sp:11499, p:215, img:'https://images.unsplash.com/photo-1544980919-e17526d7c03b?w=700&q=80',  t:'Luxury',    r:'Living Room', m:'Satin',  c:'Gold' },
+  ],
+  god: [
+    { id:420, n:'Shiva Tandava Mural',  sp:9999,  p:195, img:'https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=700&q=80',  t:'Spiritual', r:'Pooja Room',  m:'Satin',  c:'Blue' },
+    { id:421, n:'Vishnu Ananthasayana', sp:9499,  p:187, img:'https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?w=700&q=80',  t:'Spiritual', r:'Pooja Room',  m:'Satin',  c:'Blue' },
+    { id:422, n:'Ganesha Blessing',     sp:8799,  p:179, img:'https://images.unsplash.com/photo-1609167830220-7164aa360951?w=700&q=80',  t:'Spiritual', r:'Pooja Room',  m:'Matte',  c:'Orange' },
+    { id:423, n:'Lakshmi Abundance',    sp:9299,  p:183, img:'https://images.unsplash.com/photo-1599946347371-68eb71b16afc?w=700&q=80',  t:'Spiritual', r:'Pooja Room',  m:'Satin',  c:'Gold' },
+    { id:424, n:'Durga Mahishasura',    sp:10299, p:201, img:'https://images.unsplash.com/photo-1548013146-72479768bada?w=700&q=80',  t:'Spiritual', r:'Pooja Room',  m:'Satin',  c:'Red' },
+    { id:425, n:'Krishna Leela',        sp:8499,  p:175, img:'https://images.unsplash.com/photo-1544980919-e17526d7c03b?w=700&q=80',  t:'Spiritual', r:'Pooja Room',  m:'Matte',  c:'Blue' },
+    { id:426, n:'Ram Darbar',           sp:9799,  p:191, img:'https://images.unsplash.com/photo-1617958547060-3013e89f2eff?w=700&q=80',  t:'Spiritual', r:'Living Room', m:'Satin',  c:'Gold' },
+    { id:427, n:'Saraswati Knowledge',  sp:8199,  p:171, img:'https://images.unsplash.com/photo-1569429593410-b498b3fb3387?w=700&q=80',  t:'Spiritual', r:'Office',      m:'Matte',  c:'White' },
+    { id:428, n:'Hanuman Ji Devotion',  sp:9099,  p:181, img:'https://images.unsplash.com/photo-1605902711622-cfb43c4437b5?w=700&q=80',  t:'Spiritual', r:'Pooja Room',  m:'Satin',  c:'Orange' },
+    { id:429, n:'Panchamukhi Ganesha',  sp:10999, p:211, img:'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=700&q=80',  t:'Luxury',    r:'Pooja Room',  m:'Satin',  c:'Gold' },
+    { id:430, n:'Surya Namaskar',       sp:8799,  p:179, img:'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=700&q=80',  t:'Spiritual', r:'Living Room', m:'Matte',  c:'Saffron' },
+  ],
+  peacock: [
+    { id:440, n:'Royal Peacock Spread', sp:9999,  p:195, img:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=80',  t:'Nature',   r:'Living Room', m:'Satin',  c:'Blue' },
+    { id:441, n:'Peacock Feather Art',  sp:8799,  p:179, img:'https://images.unsplash.com/photo-1536147116438-62679a5e01f2?w=700&q=80',  t:'Nature',   r:'Bedroom',     m:'Satin',  c:'Green' },
+    { id:442, n:'Dancing Peacock Mural',sp:10499, p:205, img:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=80',  t:'Nature',   r:'Living Room', m:'Satin',  c:'Blue' },
+    { id:443, n:'Peacock Gold Fantasy', sp:11499, p:215, img:'https://images.unsplash.com/photo-1547036967-23d11aacaee0?w=700&q=80',  t:'Luxury',   r:'Living Room', m:'Satin',  c:'Gold' },
+    { id:444, n:'Midnight Peacock',     sp:9499,  p:187, img:'https://images.unsplash.com/photo-1511184070714-52e4a2cd6a88?w=700&q=80',  t:'Nature',   r:'Bedroom',     m:'Satin',  c:'Black' },
+    { id:445, n:'Peacock Mandala',      sp:8499,  p:175, img:'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=700&q=80',  t:'Ethnic',   r:'Living Room', m:'Matte',  c:'Multicolor' },
+    { id:446, n:'Tropical Peacock',     sp:8799,  p:179, img:'https://images.unsplash.com/photo-1541123437800-1bb1317badc2?w=700&q=80',  t:'Tropical', r:'Living Room', m:'Satin',  c:'Green' },
+    { id:447, n:'Iridescent Tail',      sp:9299,  p:183, img:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=80',  t:'Nature',   r:'Bedroom',     m:'Satin',  c:'Blue' },
+    { id:448, n:'Watercolor Peacock',   sp:7799,  p:165, img:'https://images.unsplash.com/photo-1490750967868-88df5691cc3f?w=700&q=80',  t:'Floral',   r:'Bedroom',     m:'Matte',  c:'Multicolor' },
+    { id:449, n:'Peacock in Bloom',     sp:8999,  p:181, img:'https://images.unsplash.com/photo-1520004434532-668416a08753?w=700&q=80',  t:'Nature',   r:'Living Room', m:'Satin',  c:'Green' },
+    { id:450, n:'Imperial Peacock',     sp:12299, p:225, img:'https://images.unsplash.com/photo-1547036967-23d11aacaee0?w=700&q=80',  t:'Luxury',   r:'Living Room', m:'Satin',  c:'Gold' },
+  ],
+  kidsdesign: [
+    { id:460, n:'Mickey & Friends',     sp:6499,  p:149, img:'https://images.unsplash.com/photo-1558877385-81a1c7e67d72?w=700&q=80',  t:'Cartoon',  r:'Kids Room',   m:'Matte',  c:'Multicolor' },
+    { id:461, n:'Superhero Squad',      sp:7299,  p:158, img:'https://images.unsplash.com/photo-1535378620166-273708d44e4c?w=700&q=80',  t:'Cartoon',  r:'Kids Room',   m:'Matte',  c:'Multicolor' },
+    { id:462, n:'Paw Patrol Adventure', sp:6799,  p:152, img:'https://images.unsplash.com/photo-1557858310-9052820906f7?w=700&q=80',  t:'Cartoon',  r:'Kids Room',   m:'Matte',  c:'Multicolor' },
+    { id:463, n:'Princess Castle',      sp:6999,  p:155, img:'https://images.unsplash.com/photo-1487260211189-670c54da558d?w=700&q=80',  t:'Fantasy',  r:'Kids Room',   m:'Matte',  c:'Pink' },
+    { id:464, n:'Jungle Book Mural',    sp:7499,  p:161, img:'https://images.unsplash.com/photo-1574158622682-e40e69881006?w=700&q=80',  t:'Cartoon',  r:'Kids Room',   m:'Matte',  c:'Green' },
+    { id:465, n:'Outer Space Heroes',   sp:7099,  p:156, img:'https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=700&q=80',  t:'Cartoon',  r:'Kids Room',   m:'Matte',  c:'Blue' },
+    { id:466, n:'Mermaid Kingdom',      sp:6899,  p:153, img:'https://images.unsplash.com/photo-1468581264429-2548ef9eb732?w=700&q=80',  t:'Fantasy',  r:'Kids Room',   m:'Matte',  c:'Blue' },
+    { id:467, n:'Ninja Turtles',        sp:6699,  p:150, img:'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=700&q=80',  t:'Cartoon',  r:'Kids Room',   m:'Matte',  c:'Green' },
+    { id:468, n:'Frozen Elsa Mural',    sp:7499,  p:161, img:'https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=700&q=80',  t:'Fantasy',  r:'Kids Room',   m:'Satin',  c:'Blue' },
+    { id:469, n:'Cars Racing Track',    sp:6299,  p:145, img:'https://images.unsplash.com/photo-1535378620166-273708d44e4c?w=700&q=80',  t:'Cartoon',  r:'Kids Room',   m:'Matte',  c:'Red' },
+    { id:470, n:'Lion King Safari',     sp:7799,  p:165, img:'https://images.unsplash.com/photo-1574158622682-e40e69881006?w=700&q=80',  t:'Cartoon',  r:'Kids Room',   m:'Satin',  c:'Orange' },
+  ],
+  ethnic: [
+    { id:480, n:'Rajasthani Block Print',sp:7999, p:169, img:'https://images.unsplash.com/photo-1582582621959-48d27397dc69?w=700&q=80',  t:'Ethnic',   r:'Living Room', m:'Matte',  c:'Multicolor' },
+    { id:481, n:'Mughal Jaali Pattern', sp:9499,  p:187, img:'https://images.unsplash.com/photo-1609167830220-7164aa360951?w=700&q=80',  t:'Ethnic',   r:'Living Room', m:'Satin',  c:'Blue' },
+    { id:482, n:'Warli Tribal Art',     sp:7299,  p:158, img:'https://images.unsplash.com/photo-1617958547060-3013e89f2eff?w=700&q=80',  t:'Ethnic',   r:'Living Room', m:'Matte',  c:'Brown' },
+    { id:483, n:'Madhubani Motif',      sp:7799,  p:165, img:'https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=700&q=80',  t:'Ethnic',   r:'Bedroom',     m:'Matte',  c:'Multicolor' },
+    { id:484, n:'Ikat Geometric',       sp:8299,  p:173, img:'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=700&q=80',  t:'Ethnic',   r:'Living Room', m:'Satin',  c:'Blue' },
+    { id:485, n:'Kalamkari Nature',     sp:8799,  p:179, img:'https://images.unsplash.com/photo-1520004434532-668416a08753?w=700&q=80',  t:'Ethnic',   r:'Bedroom',     m:'Matte',  c:'Red' },
+    { id:486, n:'Bandhani Swirls',      sp:7499,  p:161, img:'https://images.unsplash.com/photo-1523289333742-be1143f6b766?w=700&q=80',  t:'Ethnic',   r:'Bedroom',     m:'Satin',  c:'Multicolor' },
+    { id:487, n:'Paisley Pattern',      sp:7999,  p:169, img:'https://images.unsplash.com/photo-1563298723-dcfebaa392e3?w=700&q=80',  t:'Ethnic',   r:'Living Room', m:'Matte',  c:'Red' },
+    { id:488, n:'Phulkari Embroidery',  sp:8499,  p:175, img:'https://images.unsplash.com/photo-1582582621959-48d27397dc69?w=700&q=80',  t:'Ethnic',   r:'Bedroom',     m:'Satin',  c:'Multicolor' },
+    { id:489, n:'Gond Art Mural',       sp:8999,  p:181, img:'https://images.unsplash.com/photo-1617958547060-3013e89f2eff?w=700&q=80',  t:'Ethnic',   r:'Living Room', m:'Matte',  c:'Black' },
+    { id:490, n:'Kerala Mural Style',   sp:9799,  p:193, img:'https://images.unsplash.com/photo-1548013146-72479768bada?w=700&q=80',  t:'Ethnic',   r:'Living Room', m:'Satin',  c:'Brown' },
+  ],
+  grooming: [
+    { id:500, n:'Barber Pole Vintage',  sp:6999,  p:155, img:'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=700&q=80',  t:'Modern',   r:'Office',      m:'Matte',  c:'Red' },
+    { id:501, n:'The Gentleman Wall',   sp:7499,  p:161, img:'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=700&q=80',  t:'Modern',   r:'Office',      m:'Satin',  c:'Black' },
+    { id:502, n:'Scissor & Comb Art',   sp:6799,  p:152, img:'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=700&q=80',  t:'Abstract', r:'Office',      m:'Matte',  c:'Grey' },
+    { id:503, n:'Tattoo Studio Grunge', sp:7799,  p:165, img:'https://images.unsplash.com/photo-1617958547060-3013e89f2eff?w=700&q=80',  t:'Abstract', r:'Office',      m:'Matte',  c:'Black' },
+    { id:504, n:'Salon Floral Glam',    sp:7299,  p:158, img:'https://images.unsplash.com/photo-1520004434532-668416a08753?w=700&q=80',  t:'Floral',   r:'Office',      m:'Satin',  c:'Pink' },
+    { id:505, n:'Beard & Blades',       sp:7099,  p:156, img:'https://images.unsplash.com/photo-1557682250-33bd709cbe85?w=700&q=80',  t:'Modern',   r:'Office',      m:'Matte',  c:'Grey' },
+    { id:506, n:'Makeup Palette Art',   sp:7499,  p:161, img:'https://images.unsplash.com/photo-1557858310-9052820906f7?w=700&q=80',  t:'Abstract', r:'Office',      m:'Satin',  c:'Multicolor' },
+    { id:507, n:'Classic Barbershop',   sp:8299,  p:173, img:'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=700&q=80',  t:'Classic',  r:'Office',      m:'Matte',  c:'Black' },
+    { id:508, n:'Glam Salon Marble',    sp:9499,  p:187, img:'https://images.unsplash.com/photo-1618219740975-d40978e5fdce?w=700&q=80',  t:'Luxury',   r:'Office',      m:'Satin',  c:'White' },
+    { id:509, n:'Neon Beauty Splash',   sp:7799,  p:165, img:'https://images.unsplash.com/photo-1557682250-33bd709cbe85?w=700&q=80',  t:'Abstract', r:'Office',      m:'Satin',  c:'Multicolor' },
+    { id:510, n:'Chic Hair Studio',     sp:8199,  p:171, img:'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=700&q=80',  t:'Modern',   r:'Office',      m:'Matte',  c:'Black' },
+  ],
+  mandala: [
+    { id:520, n:'Lotus Mandala Gold',   sp:8999,  p:181, img:'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=700&q=80',  t:'Ethnic',   r:'Bedroom',     m:'Matte',  c:'Gold' },
+    { id:521, n:'Boho Mandala White',   sp:7799,  p:165, img:'https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=700&q=80',  t:'Ethnic',   r:'Bedroom',     m:'Matte',  c:'White' },
+    { id:522, n:'Blue Mandala Circle',  sp:8299,  p:173, img:'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=700&q=80',  t:'Ethnic',   r:'Living Room', m:'Satin',  c:'Blue' },
+    { id:523, n:'Geometric Mandala',    sp:8799,  p:179, img:'https://images.unsplash.com/photo-1567016432779-094069958ea5?w=700&q=80',  t:'Ethnic',   r:'Bedroom',     m:'Matte',  c:'Black' },
+    { id:524, n:'Colorful Zen Mandala', sp:7499,  p:161, img:'https://images.unsplash.com/photo-1557682250-33bd709cbe85?w=700&q=80',  t:'Ethnic',   r:'Living Room', m:'Matte',  c:'Multicolor' },
+    { id:525, n:'Sacred Geometry',      sp:9499,  p:187, img:'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=700&q=80',  t:'Ethnic',   r:'Living Room', m:'Satin',  c:'Gold' },
+    { id:526, n:'Mehndi Style Wall',    sp:7999,  p:169, img:'https://images.unsplash.com/photo-1582582621959-48d27397dc69?w=700&q=80',  t:'Ethnic',   r:'Bedroom',     m:'Matte',  c:'Brown' },
+    { id:527, n:'Tapestry Mandala',     sp:8499,  p:175, img:'https://images.unsplash.com/photo-1547036967-23d11aacaee0?w=700&q=80',  t:'Ethnic',   r:'Bedroom',     m:'Satin',  c:'Multicolor' },
+    { id:528, n:'Night Sky Mandala',    sp:9299,  p:183, img:'https://images.unsplash.com/photo-1511184070714-52e4a2cd6a88?w=700&q=80',  t:'Ethnic',   r:'Bedroom',     m:'Satin',  c:'Blue' },
+    { id:529, n:'Copper Mandala',       sp:10499, p:205, img:'https://images.unsplash.com/photo-1618219740975-d40978e5fdce?w=700&q=80',  t:'Luxury',   r:'Living Room', m:'Satin',  c:'Gold' },
+    { id:530, n:'Pastel Bohemian',      sp:7299,  p:158, img:'https://images.unsplash.com/photo-1523289333742-be1143f6b766?w=700&q=80',  t:'Ethnic',   r:'Bedroom',     m:'Matte',  c:'Pink' },
+  ],
+  mandir: [
+    { id:540, n:'Temple Gopuram Mural', sp:10999, p:211, img:'https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?w=700&q=80',  t:'Spiritual', r:'Pooja Room',  m:'Satin',  c:'Gold' },
+    { id:541, n:'Inner Sanctum Art',    sp:9499,  p:187, img:'https://images.unsplash.com/photo-1609167830220-7164aa360951?w=700&q=80',  t:'Spiritual', r:'Pooja Room',  m:'Satin',  c:'Saffron' },
+    { id:542, n:'Marble Pillared Hall', sp:11499, p:215, img:'https://images.unsplash.com/photo-1618219740975-d40978e5fdce?w=700&q=80',  t:'Luxury',    r:'Pooja Room',  m:'Satin',  c:'White' },
+    { id:543, n:'Diya & Rangoli',       sp:8499,  p:175, img:'https://images.unsplash.com/photo-1599946347371-68eb71b16afc?w=700&q=80',  t:'Spiritual', r:'Pooja Room',  m:'Matte',  c:'Multicolor' },
+    { id:544, n:'Shivalinga Shrine',    sp:9799,  p:193, img:'https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=700&q=80',  t:'Spiritual', r:'Pooja Room',  m:'Satin',  c:'Black' },
+    { id:545, n:'Om Shanti Mural',      sp:8999,  p:181, img:'https://images.unsplash.com/photo-1617958547060-3013e89f2eff?w=700&q=80',  t:'Spiritual', r:'Pooja Room',  m:'Matte',  c:'Saffron' },
+    { id:546, n:'Lotus Arch Portal',    sp:10499, p:205, img:'https://images.unsplash.com/photo-1548013146-72479768bada?w=700&q=80',  t:'Luxury',    r:'Pooja Room',  m:'Satin',  c:'Gold' },
+    { id:547, n:'Blessing Hands',       sp:7999,  p:169, img:'https://images.unsplash.com/photo-1544980919-e17526d7c03b?w=700&q=80',  t:'Spiritual', r:'Pooja Room',  m:'Matte',  c:'Orange' },
+    { id:548, n:'Vedic Symbols Wall',   sp:9299,  p:183, img:'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=700&q=80',  t:'Spiritual', r:'Pooja Room',  m:'Satin',  c:'Gold' },
+    { id:549, n:'Char Dham Panorama',   sp:12499, p:229, img:'https://images.unsplash.com/photo-1605902711622-cfb43c4437b5?w=700&q=80',  t:'Luxury',    r:'Pooja Room',  m:'Satin',  c:'Gold' },
+    { id:550, n:'Puja Thali Pattern',   sp:7699,  p:163, img:'https://images.unsplash.com/photo-1582582621959-48d27397dc69?w=700&q=80',  t:'Spiritual', r:'Pooja Room',  m:'Matte',  c:'Multicolor' },
+  ],
+  stripes: [
+    { id:560, n:'Classic Pinstripe',    sp:6499,  p:148, img:'https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=700&q=80',  t:'Modern',   r:'Office',      m:'Matte',  c:'Grey' },
+    { id:561, n:'Bold Candy Stripe',    sp:6799,  p:152, img:'https://images.unsplash.com/photo-1523289333742-be1143f6b766?w=700&q=80',  t:'Modern',   r:'Kids Room',   m:'Matte',  c:'Multicolor' },
+    { id:562, n:'Herringbone Weave',    sp:7499,  p:161, img:'https://images.unsplash.com/photo-1567016432779-094069958ea5?w=700&q=80',  t:'Classic',  r:'Bedroom',     m:'Matte',  c:'Beige' },
+    { id:563, n:'Navy Awning Stripes',  sp:7199,  p:157, img:'https://images.unsplash.com/photo-1557682250-33bd709cbe85?w=700&q=80',  t:'Classic',  r:'Living Room', m:'Matte',  c:'Blue' },
+    { id:564, n:'Metallic Gold Lines',  sp:9299,  p:183, img:'https://images.unsplash.com/photo-1618219740975-d40978e5fdce?w=700&q=80',  t:'Luxury',   r:'Living Room', m:'Satin',  c:'Gold' },
+    { id:565, n:'Blush Wide Stripe',    sp:7099,  p:156, img:'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=700&q=80',  t:'Modern',   r:'Bedroom',     m:'Matte',  c:'Pink' },
+    { id:566, n:'Black & White Stripe', sp:6799,  p:152, img:'https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=700&q=80',  t:'Modern',   r:'Office',      m:'Satin',  c:'Black' },
+    { id:567, n:'Watercolor Stripe',    sp:7499,  p:161, img:'https://images.unsplash.com/photo-1490750967868-88df5691cc3f?w=700&q=80',  t:'Abstract', r:'Bedroom',     m:'Matte',  c:'Blue' },
+    { id:568, n:'Linen Texture Stripe', sp:7799,  p:165, img:'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=700&q=80',  t:'Texture',  r:'Bedroom',     m:'Matte',  c:'Beige' },
+    { id:569, n:'Rainbow Vertical',     sp:5999,  p:139, img:'https://images.unsplash.com/photo-1547036967-23d11aacaee0?w=700&q=80',  t:'Modern',   r:'Kids Room',   m:'Matte',  c:'Multicolor' },
+    { id:570, n:'Charcoal Stripe',      sp:8499,  p:175, img:'https://images.unsplash.com/photo-1557682250-33bd709cbe85?w=700&q=80',  t:'Modern',   r:'Office',      m:'Satin',  c:'Grey' },
+  ],
+  framemouldings: [
+    { id:580, n:'Gold Frame Panel',     sp:9499,  p:187, img:'https://images.unsplash.com/photo-1513694203232-719a280e022f?w=700&q=80',  t:'Luxury',   r:'Living Room', m:'Satin',  c:'Gold' },
+    { id:581, n:'White Beaded Frame',   sp:7999,  p:169, img:'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=700&q=80',  t:'Classic',  r:'Living Room', m:'Matte',  c:'White' },
+    { id:582, n:'French Rococo Frame',  sp:11499, p:215, img:'https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=700&q=80',  t:'Luxury',   r:'Living Room', m:'Satin',  c:'Gold' },
+    { id:583, n:'Simple Shaker Panel',  sp:6999,  p:155, img:'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=700&q=80',  t:'Modern',   r:'Bedroom',     m:'Matte',  c:'White' },
+    { id:584, n:'Victorian Ornate',     sp:10499, p:205, img:'https://images.unsplash.com/photo-1563298723-dcfebaa392e3?w=700&q=80',  t:'Classic',  r:'Living Room', m:'Satin',  c:'Cream' },
+    { id:585, n:'Black Slim Frame',     sp:7499,  p:161, img:'https://images.unsplash.com/photo-1557682250-33bd709cbe85?w=700&q=80',  t:'Modern',   r:'Office',      m:'Matte',  c:'Black' },
+    { id:586, n:'Arched Panel Print',   sp:8799,  p:179, img:'https://images.unsplash.com/photo-1567016432779-094069958ea5?w=700&q=80',  t:'Classic',  r:'Living Room', m:'Satin',  c:'White' },
+    { id:587, n:'Chunky Rope Frame',    sp:7799,  p:165, img:'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=700&q=80',  t:'Modern',   r:'Bedroom',     m:'Matte',  c:'Beige' },
+    { id:588, n:'Art Deco Frame',       sp:9999,  p:195, img:'https://images.unsplash.com/photo-1618219740975-d40978e5fdce?w=700&q=80',  t:'Luxury',   r:'Living Room', m:'Satin',  c:'Gold' },
+    { id:589, n:'Gallery Wall Frames',  sp:8299,  p:173, img:'https://images.unsplash.com/photo-1513694203232-719a280e022f?w=700&q=80',  t:'Modern',   r:'Living Room', m:'Matte',  c:'White' },
+    { id:590, n:'Colonial Panel Style', sp:9299,  p:183, img:'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=700&q=80',  t:'Classic',  r:'Living Room', m:'Satin',  c:'Cream' },
+  ],
+
 };
 
 /* Build a flat PRODUCTS map keyed by id for product detail lookups */
@@ -3319,7 +3731,7 @@ function showCategory(cat){
   document.getElementById('sortSel').value = 'Popular';
   hideAllViews();
   views.category.classList.add('active');
-  setActiveNav(['customized','rolls','premium','work'].includes(cat) ? cat : 'customized');
+  setActiveNav(['customized','rolls','premium','work','office'].includes(cat) ? cat : 'customized');
   renderCatProducts();
   window.scrollTo({top:0, behavior:'instant'});
   pushHistory({view:'category', id:cat});
@@ -3414,7 +3826,7 @@ document.body.addEventListener('click', e => {
     if(t==='home') showHome();
     else if(t==='privacy') showPrivacy();
     else if(['about','reviews','blog','shipping','returns','track','terms','cancellation','refund'].includes(t)) showPage(t);
-    else if(['customized','rolls','premium','work','kids','office','living','bedroom','room'].includes(t)) showCategory(t);
+    else if(['customized','rolls','premium','work','kids','office','living','bedroom','room','kidsroom','pooja','ceiling','mouldings','floral','tropical','texture3d','abstract','nature','chinoiserie','buddha','god','peacock','kidsdesign','ethnic','grooming','mandala','mandir','stripes','framemouldings'].includes(t)) showCategory(t);
     else if(t==='rooms') { showHome(); setTimeout(()=>document.querySelector('#view-home .room-grid')?.scrollIntoView({behavior:'smooth'}), 50); }
     else if(t==='calculator'){ showHome(); setTimeout(()=>document.getElementById('calculator-section')?.scrollIntoView({behavior:'smooth'}), 50); }
     else if(t==='contact'){ showHome(); setTimeout(()=>document.getElementById('contact')?.scrollIntoView({behavior:'smooth'}), 50); }
@@ -3443,15 +3855,37 @@ wallpapersToggle.addEventListener('click', () => {
   wallpapersToggle.classList.toggle('open', !isOpen);
 });
 
-/* Sub-menu link clicks */
-document.querySelectorAll('#wallpapersSubMenu a').forEach(a => a.addEventListener('click', () => {
-  const t = a.dataset.nav;
+/* By Room sub-sub-toggle */
+const byRoomToggle = document.getElementById('byRoomToggle');
+const byRoomMenu   = document.getElementById('byRoomMenu');
+byRoomToggle.addEventListener('click', () => {
+  byRoomMenu.classList.toggle('open');
+  byRoomToggle.classList.toggle('open');
+});
+
+/* By Design sub-sub-toggle */
+const byDesignToggle = document.getElementById('byDesignToggle');
+const byDesignMenu   = document.getElementById('byDesignMenu');
+byDesignToggle.addEventListener('click', () => {
+  byDesignMenu.classList.toggle('open');
+  byDesignToggle.classList.toggle('open');
+});
+
+/* Sub-menu category clicks (By Room & By Design data-cat links) */
+document.querySelectorAll('#byRoomMenu a, #byDesignMenu a').forEach(a => a.addEventListener('click', () => {
+  const cat = a.dataset.cat;
   closeNavDrawer();
   setTimeout(() => {
-    if(['customized','rolls','premium','kids','office'].includes(t)) showCategory(t);
-    document.querySelectorAll('#navDrawerLinks > a').forEach(x => x.classList.remove('active'));
-    document.querySelectorAll('#wallpapersSubMenu a').forEach(x => x.classList.toggle('active', x.dataset.nav === t));
+    if(cat) showCategory(cat);
+    document.querySelectorAll('#byRoomMenu a, #byDesignMenu a').forEach(x => x.classList.toggle('active', x.dataset.cat === cat));
   }, 200);
+}));
+
+/* Wallpaper Rolls direct link inside wallpapersSubMenu */
+document.querySelectorAll('#wallpapersSubMenu > a[data-nav]').forEach(a => a.addEventListener('click', () => {
+  const t = a.dataset.nav;
+  closeNavDrawer();
+  setTimeout(() => { if(t) showCategory(t); }, 200);
 }));
 
 /* Top-level drawer link clicks */
